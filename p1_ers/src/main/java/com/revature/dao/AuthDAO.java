@@ -31,9 +31,9 @@ public class AuthDAO {
 
                 );
                 int roleFk = rs.getInt("user_role_id_fk");
-                RoleDAO rDAO = new RoleDAO();
+                ERS_User_RolesDAO rDAO = new ERS_User_RolesDAO();
                 ERS_User_Roles r = rDAO.getRoleById(roleFk);
-                u.setRole(r);
+                u.setUser_role_id_fk(r);
                 return u;
 
             }
