@@ -22,12 +22,15 @@ public class AuthDAO {
             //since we're only expecting one record. we can use an if instead of while statement
             if(rs.next()){
                 ERS_Users u = new ERS_Users(
-                        rs.getInt("employee_id"),
-                        rs.getString("first_name"),
-                        rs.getString("last_name"),
+                        rs.getInt("user_id"),
+                        rs.getString("ers_username"),
+                        rs.getString("ers_password"),
+                        rs.getString("ers_first_name"),
+                        rs.getString("ers_last_name"),
                         null
+
                 );
-                int roleFk = rs.getInt("role_id_fk");
+                int roleFk = rs.getInt("user_role_id_fk");
                 RoleDAO rDAO = new RoleDAO();
                 ERS_User_Roles r = rDAO.getRoleById(roleFk);
                 u.setRole(r);
