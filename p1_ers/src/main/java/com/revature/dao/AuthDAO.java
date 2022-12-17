@@ -26,14 +26,13 @@ public class AuthDAO {
                         rs.getString("ers_username"),
                         rs.getString("ers_password"),
                         rs.getString("ers_first_name"),
-                        rs.getString("ers_last_name"),
-                        null
+                        rs.getString("ers_last_name")
 
                 );
                 int roleFk = rs.getInt("user_role_id_fk");
                 ERS_User_RolesDAO rDAO = new ERS_User_RolesDAO();
                 ERS_User_Roles r = rDAO.getRoleById(roleFk);
-                u.setUser_role_id_fk(r);
+                u.setUser_role_id_fk(r.getUser_role_id());
                 return u;
 
             }
