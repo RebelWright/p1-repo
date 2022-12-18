@@ -12,8 +12,8 @@ public class LoginDTO {
     private String ers_username;
     private String ers_password;
 
-    public LoginDTO(String first_name, String ers_password) {
-        this.ers_username = first_name;
+    public LoginDTO(String ers_username, String ers_password) {
+        this.ers_username = ers_username;
         this.ers_password = ers_password;
     }
 
