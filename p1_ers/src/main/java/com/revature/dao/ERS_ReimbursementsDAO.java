@@ -39,7 +39,7 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
                 ERS_User_RolesDAO rDAO = new ERS_User_RolesDAO();
                 ERS_User_Roles r = rDAO.getRoleById(roleFK);
                 //use the setter of our employee object and assign it the role we made above
-                reimb.s(r);
+                reimb.setCreator_id_fk(r);
                 //now thanks to our setter we have a fully initialized employee object
                 //now we can add it to the arraylist
                 reimbList.add(reimb);
@@ -57,16 +57,16 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
         try(Connection conn = ConnectionUtil.getConnection()){
             //create a sql string. Insert statement
             String sql = "insert into ers_reimbursements (reimb_amount, reimb_description, creator_id_fk, resolver_id_fk, reimb_type_fk, reimb_status_fk) " +
-                    "values (?,?,?,?,?,?);";
+                    "values (?,?,?,null,?,1);";
             PreparedStatement ps = conn.prepareStatement(sql);
             //fill in each wildcard using the reimbursements object
             ps.setInt(1, reimb.getReimb_amount());
             ps.setString(2, reimb.getReimb_description());
             ps.setInt(3, reimb.getCreator_id_fk());
-            ps.setInt(4,reimb.setResolver_id_fk(0));
-            ps.setInt(5, reimb.getReimb_type_fk());
-            ps.setInt(6, reimb.setReimb_status_fk(1));
-            int reimb_status = ps.s
+            //ps.setInt(4,reimb.getResolver_id_fk(0));
+            ps.setInt(4, reimb.getReimb_type_fk());
+            //ps.setInt(6, reimb.getReimb_status_fk(1));
+
 
             //we need to move through a role to get to its variables
             //we get a role, and then we get the role's id
