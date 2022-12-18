@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
     @Override
-    public ArrayList<ERS_Reimbursements> getReimbursements() {
+    public ArrayList<ERS_Reimbursements> getAllReimbursements() {
         try(Connection conn = ConnectionUtil.getConnection()){
             // a string that rep our sql statement
             String sql = "select * from ers_reimbursements;";
@@ -33,15 +33,7 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
                         rs.getInt("reimb_type_fk"),
                         rs.getInt("reimb_status_fk")
                 );
-                //use our getRoleById method that we created
-                int roleFK = rs.getInt("role_id_fk");
-                //instantiate RoleDAO object then use it and getRoleById to get our role_id foreign key
-                ERS_User_RolesDAO rDAO = new ERS_User_RolesDAO();
-                ERS_User_Roles r = rDAO.getRoleById(roleFK);
-                //use the setter of our employee object and assign it the role we made above
-                reimb.setCreator_id_fk(r);
-                //now thanks to our setter we have a fully initialized employee object
-                //now we can add it to the arraylist
+
                 reimbList.add(reimb);
             }
             return reimbList;

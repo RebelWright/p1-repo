@@ -13,7 +13,7 @@ public class ERS_Reimb_StatusDAO implements ERS_Reimb_StatusDAO_Interface{
         try(Connection conn = ConnectionUtil.getConnection()){
 
             //create our SQL String (to be filled with values from the method arguments)
-            String sql = "update ers_reimbursements set reimb_status_fk = 2 where role_title = ?;";
+            String sql = "update ers_reimbursements set reimb_status_fk = 2 where reimb_id = ?;";
 
             //Prepared statement so that we can fill appropriate values
             PreparedStatement ps = conn.prepareStatement(sql);
