@@ -49,7 +49,6 @@ public class ERS_Reimb_StatusDAO implements ERS_Reimb_StatusDAO_Interface{
 
             //execute the update!
             ps.executeUpdate();
-
             //if we get this far in the try block, we can assume nothing went wrong. return true.
             return true;
 
