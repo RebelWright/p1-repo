@@ -53,20 +53,26 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
     }
 
     @Override
-    public ERS_Reimbursements insertReimbursement(ERS_Reimbursements reimburs) {
+    public ERS_Reimbursements insertReimbursement(ERS_Reimbursements reimb) {
         try(Connection conn = ConnectionUtil.getConnection()){
             //create a sql string. Insert statement
-            String sql = "insert into ers_reimbursements (reimb_amount,reimb_description, creator_id_fk) values (?,?,?);";
+            String sql = "insert into ers_reimbursements (reimb_amount, reimb_description, creator_id_fk, resolver_id_fk, reimb_type_fk, reimb_status_fk) " +
+                    "values (?,?,?,?,?,?);";
             PreparedStatement ps = conn.prepareStatement(sql);
             //fill in each wildcard using the reimbursements object
-            ps.setInt(1, reimburs.getReimb_amount());
-            ps.setString(2, reimburs.getReimb_description());
-            ps.setInt(3, reimburs.getCreator_id_fk());
+            ps.setInt(1, reimb.getReimb_amount());
+            ps.setString(2, reimb.getReimb_description());
+            ps.setInt(3, reimb.getCreator_id_fk());
+            ps.setInt(4,reimb.setResolver_id_fk(0));
+            ps.setInt(5, reimb.getReimb_type_fk());
+            ps.setInt(6, reimb.setReimb_status_fk(1));
+            int reimb_status = ps.s
+
             //we need to move through a role to get to its variables
             //we get a role, and then we get the role's id
             ps.executeUpdate();
             // no result set because we are not returning any data
-            return reimburs;
+            return reimb;
         }
         catch(SQLException e){
             e.printStackTrace();
