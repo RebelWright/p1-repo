@@ -181,21 +181,23 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
     }
 
     @Override
-    public ArrayList<ERS_Reimbursements> viewUserReimbursements() {
+    public ArrayList<ERS_Reimbursements> viewUserReimbursements(int creator_id_fk) {
+
         try(Connection conn = ConnectionUtil.getConnection()){
             // a string that rep our sql statement
-            String sql = "select * from ers_reimbursements where creator_id_fk = user_id";
+            String sql = "select * from ers_reimbursements where creator_id_fk = ?";
             //no variables needed in the query above
             //so instead of a prepared statement we'll use a regular statement
             //if we don't have wildcard or variables, we only need Statement not Prepared Statement
-            Statement s = conn.createStatement();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, creator_id_fk);
             //now execute the query and save the results in a ResultSet
-            ResultSet rs = s.executeQuery(sql);
+            ResultSet rs = ps.executeQuery(sql);
             //this time before while loop, instantiate an empty arraylist to store our Employee objects
             ArrayList<ERS_Reimbursements> reimbList= new ArrayList();
             //rs.next iterates through the incoming data. returns false when there is no more new data
             while(rs.next()){
-                //for every employee returned from the database we'll make a new employee object
+                //for every user reimb returned from the database we'll make a new employee object
                 ERS_Reimbursements reimb = new ERS_Reimbursements(
                         rs.getInt("reimb_id"),
                         rs.getInt("reimb_amount"),

@@ -20,6 +20,13 @@ public class ERS_Users {
         this.user_role_id_fk = user_role_id_fk;
     }
 
+    public ERS_Users(String ers_username, String ers_password, String ers_first_name, String ers_last_name, int user_role_id_fk) {
+        this.ers_username = ers_username;
+        this.ers_password = ers_password;
+        this.ers_first_name = ers_first_name;
+        this.ers_last_name = ers_last_name;
+        this.user_role_id_fk = user_role_id_fk;
+    }
 
     public int getUser_id() {
         return user_id;

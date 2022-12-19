@@ -10,6 +10,6 @@ public interface ERS_ReimbursementsDAO_Interface {
     ArrayList<ERS_Reimbursements> viewPendingReimbursements();
     ArrayList<ERS_Reimbursements> viewApprovedReimbursements();
     ArrayList<ERS_Reimbursements> viewDeniedReimbursements();
-    ArrayList<ERS_Reimbursements> viewUserReimbursements();
+    ArrayList<ERS_Reimbursements> viewUserReimbursements(int creator_id_fk);
 
 }
