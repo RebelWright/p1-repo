@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import com.google.gson.Gson;
 import com.revature.dao.ERS_ReimbursementsDAO;
+import com.revature.dao.ERS_User_RolesDAO;
+import com.revature.dao.ERS_UsersDAO;
 import com.revature.models.ERS_Reimbursements;
 import io.javalin.http.Handler;
 
@@ -154,9 +156,9 @@ public class ReimbController {
             //if the Session is not null, we know the user is logged in.
             //Thus, we can allow them to view employees
             if(AuthController.ses != null) {
-
+                int user_id = Integer.parseInt((String) AuthController.ses.getAttribute("employee_id"));
                 //We need an ArrayList of Employees, courtesy of our EmployeeDAO
-                ArrayList<ERS_Reimbursements> reimbList = reimbDAO.viewUserReimbursements();
+                ArrayList<ERS_Reimbursements> reimbList = reimbDAO.viewUserReimbursements(user_id);
 
                 //PROBLEM: we can't send plain Java in an HTTP Response. We need JSON! This is where GSON comes in
 

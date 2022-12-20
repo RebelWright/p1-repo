@@ -2,6 +2,7 @@ package com.revature;
 
 import com.revature.controllers.AuthController;
 import com.revature.controllers.ReimbController;
+import com.revature.controllers.Reimb_StatusController;
 import com.revature.controllers.UserController;
 import com.revature.utils.ConnectionUtil;
 import java.sql.Connection;
@@ -34,6 +35,7 @@ public class Launcher {
         ReimbController rc = new ReimbController();
         AuthController ac = new AuthController();
         UserController uc = new UserController();
+        Reimb_StatusController sc = new Reimb_StatusController();
 
         /* app.get() is the Javalin method that takes in GET requests.
         In this case, it's calling to the getAllEmployeesHandler in the EmployeeController
@@ -52,7 +54,8 @@ public class Launcher {
 
         //app.patch() is the Javalin method that takes in PATCH requests
         //{title}?? This is a PATH PARAMETER. The value that the user inputs after /roles/ will be stored.
-        app.patch("/ers_reimbursements/{reimb_status_fk}", rc.a);
+        app.patch("/ers_reimbursements/{reimb_status_fk}", sc.approveReimb_StatusHandler);
+        app.patch("/ers_reimbursements/{reimb_status_fk}", sc.denyReimb_StatusHandler);
 
         //this is the endpoint handler for login
         app.post("/login", ac.loginHandler);

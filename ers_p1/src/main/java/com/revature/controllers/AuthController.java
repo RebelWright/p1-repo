@@ -25,6 +25,10 @@ public class AuthController {
         ERS_Users loggedInEmployee = aDAO.login(lDTO.getErs_username(), lDTO.getErs_password());
         if(loggedInEmployee != null) {
             ses = ctx.req.getSession();
+            ses.setAttribute("role_id", loggedInEmployee.getUser_role_id_fk());
+            ses.setAttribute("employee_id", loggedInEmployee.getUser_id());
+
+
             String userJson = gson.toJson(loggedInEmployee);
             ctx.result(userJson);
             ctx.status(202);
