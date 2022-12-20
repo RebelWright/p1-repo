@@ -1,10 +1,16 @@
 package com.revature.controllers;
 
 
+import com.revature.dao.AuthDAO;
 import com.revature.dao.ERS_Reimb_StatusDAO;
+
 import io.javalin.http.Handler;
 
+import javax.servlet.http.HttpSession;
+
 public class Reimb_StatusController {
+    public static HttpSession ses;
+    AuthDAO aDAO = new AuthDAO();
     ERS_Reimb_StatusDAO statusDAO = new ERS_Reimb_StatusDAO();
     //This Handler will get the HTTP PATCH request to update a Role's salary
     public Handler approveReimb_StatusHandler = (ctx) -> {
