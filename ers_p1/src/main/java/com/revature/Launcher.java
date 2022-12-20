@@ -2,6 +2,7 @@ package com.revature;
 
 import com.revature.controllers.AuthController;
 import com.revature.controllers.ReimbController;
+import com.revature.controllers.UserController;
 import com.revature.utils.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -32,6 +33,7 @@ public class Launcher {
         //EmployeeController ec = new EmployeeController();
         ReimbController rc = new ReimbController();
         AuthController ac = new AuthController();
+        UserController uc = new UserController();
 
         /* app.get() is the Javalin method that takes in GET requests.
         In this case, it's calling to the getAllEmployeesHandler in the EmployeeController
@@ -45,10 +47,12 @@ public class Launcher {
         //app.post() is the Javalin method that takes in POST requests
         //why are we allowed to have two handlers that both take requests ending in /employees
         app.post("/ers_reimbursements", rc.insertReimb);
+        app.post("/ers_users", uc.insertEmployee);
+
 
         //app.patch() is the Javalin method that takes in PATCH requests
         //{title}?? This is a PATH PARAMETER. The value that the user inputs after /roles/ will be stored.
-        app.patch("/roles/{title}", rc.updateSalaryHandler);
+        app.patch("/ers_reimbursements/{reimb_status_fk}", rc.a);
 
         //this is the endpoint handler for login
         app.post("/login", ac.loginHandler);
