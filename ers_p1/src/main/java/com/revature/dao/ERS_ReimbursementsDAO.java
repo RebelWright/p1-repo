@@ -84,7 +84,7 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
             //now execute the query and save the results in a ResultSet
             ResultSet rs = s.executeQuery(sql);
             //this time before while loop, instantiate an empty arraylist to store our Employee objects
-            ArrayList<ERS_Reimbursements> reimbList= new ArrayList();
+            ArrayList<ERS_Reimbursements> pendingList= new ArrayList();
             //rs.next iterates through the incoming data. returns false when there is no more new data
             while(rs.next()){
                 //for every employee returned from the database we'll make a new employee object
@@ -98,9 +98,9 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
                         rs.getInt("reimb_status_fk")
                 );
 
-                reimbList.add(reimb);
+                pendingList.add(reimb);
             }
-            return reimbList;
+            return pendingList;
         }
         catch(SQLException e){
             e.printStackTrace(); //very helpful. tells us what and where went wrong
@@ -181,7 +181,7 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
     }
 
     @Override
-    public ArrayList<ERS_Reimbursements> viewUserReimbursements(int creator_id_fk) {
+    public ArrayList<ERS_Reimbursements> viewUserReimbursements(int user_id) {
 
         try(Connection conn = ConnectionUtil.getConnection()){
             // a string that rep our sql statement
@@ -190,7 +190,7 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
             //so instead of a prepared statement we'll use a regular statement
             //if we don't have wildcard or variables, we only need Statement not Prepared Statement
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, creator_id_fk);
+            ps.setInt(1, user_id);
             //now execute the query and save the results in a ResultSet
             ResultSet rs = ps.executeQuery(sql);
             //this time before while loop, instantiate an empty arraylist to store our Employee objects

@@ -8,7 +8,7 @@ import io.javalin.http.Handler;
 import java.util.ArrayList;
 
 public class ReimbController {
-    ERS_ReimbursementsDAO rDAO = new ERS_ReimbursementsDAO();
+    ERS_ReimbursementsDAO reimbDAO = new ERS_ReimbursementsDAO();
     public Handler getAllReimbHandler = (ctx) -> {
 
         /*What's ctx?? The context object! This object contains methods that we can use to
@@ -20,7 +20,7 @@ public class ReimbController {
         if(AuthController.ses != null) {
 
             //We need an ArrayList of Employees, courtesy of our EmployeeDAO
-            ArrayList<ERS_Reimbursements> reimbList = rDAO.getAllReimbursements();
+            ArrayList<ERS_Reimbursements> reimbList = reimbDAO.getAllReimbursements();
 
             //PROBLEM: we can't send plain Java in an HTTP Response. We need JSON! This is where GSON comes in
 
@@ -54,7 +54,7 @@ public class ReimbController {
             if(AuthController.ses != null) {
 
                 //We need an ArrayList of Employees, courtesy of our EmployeeDAO
-                ArrayList<ERS_Reimbursements> reimbList = rDAO.viewPendingReimbursements();
+                ArrayList<ERS_Reimbursements> reimbList = reimbDAO.viewPendingReimbursements();
 
                 //PROBLEM: we can't send plain Java in an HTTP Response. We need JSON! This is where GSON comes in
 
@@ -88,7 +88,7 @@ public class ReimbController {
             if(AuthController.ses != null) {
 
                 //We need an ArrayList of Employees, courtesy of our EmployeeDAO
-                ArrayList<ERS_Reimbursements> reimbList = rDAO.viewApprovedReimbursements();
+                ArrayList<ERS_Reimbursements> reimbList = reimbDAO.viewApprovedReimbursements();
 
                 //PROBLEM: we can't send plain Java in an HTTP Response. We need JSON! This is where GSON comes in
 
@@ -122,7 +122,7 @@ public class ReimbController {
             if(AuthController.ses != null) {
 
                 //We need an ArrayList of Employees, courtesy of our EmployeeDAO
-                ArrayList<ERS_Reimbursements> reimbList = rDAO.viewDeniedReimbursements();
+                ArrayList<ERS_Reimbursements> reimbList = reimbDAO.viewDeniedReimbursements();
 
                 //PROBLEM: we can't send plain Java in an HTTP Response. We need JSON! This is where GSON comes in
 
@@ -156,7 +156,7 @@ public class ReimbController {
             if(AuthController.ses != null) {
 
                 //We need an ArrayList of Employees, courtesy of our EmployeeDAO
-                ArrayList<ERS_Reimbursements> reimbList = rDAO.viewUserReimbursements();
+                ArrayList<ERS_Reimbursements> reimbList = reimbDAO.viewUserReimbursements();
 
                 //PROBLEM: we can't send plain Java in an HTTP Response. We need JSON! This is where GSON comes in
 
@@ -196,7 +196,7 @@ public class ReimbController {
            if it fails, we'll send an error message and a 406 status code
          */
 
-        if(rDAO.insertReimbursement(newReimb) != null){ //if insert was succesful (which we set to return an Employee)
+        if(reimbDAO.insertReimbursement(newReimb) != null){ //if insert was succesful (which we set to return an Employee)
             ctx.status(201); //201 "created"
             ctx.result(body); //send back the employee
         } else {
