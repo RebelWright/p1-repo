@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import javax.management.relation.Role;
+
 public class ERS_Users {
     private int user_id;
     private String ers_username;
@@ -8,24 +10,28 @@ public class ERS_Users {
     private String ers_last_name;
     private int user_role_id_fk;
 
+    private Role role;
+
     public ERS_Users() {
     }
 
-    public ERS_Users(int user_id, String ers_username, String ers_password, String ers_first_name, String ers_last_name, int user_role_id_fk) {
+    public ERS_Users(int user_id, String ers_username, String ers_password, String ers_first_name, String ers_last_name, int user_role_id_fk, Role role) {
         this.user_id = user_id;
         this.ers_username = ers_username;
         this.ers_password = ers_password;
         this.ers_first_name = ers_first_name;
         this.ers_last_name = ers_last_name;
         this.user_role_id_fk = user_role_id_fk;
+        this.role = role;
     }
 
-    public ERS_Users(String ers_username, String ers_password, String ers_first_name, String ers_last_name, int user_role_id_fk) {
+    public ERS_Users(String ers_username, String ers_password, String ers_first_name, String ers_last_name, int user_role_id_fk, Role role) {
         this.ers_username = ers_username;
         this.ers_password = ers_password;
         this.ers_first_name = ers_first_name;
         this.ers_last_name = ers_last_name;
         this.user_role_id_fk = user_role_id_fk;
+        this.role = role;
     }
 
     public int getUser_id() {
@@ -74,6 +80,14 @@ public class ERS_Users {
 
     public void setUser_role_id_fk(int user_role_id_fk) {
         this.user_role_id_fk = user_role_id_fk;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

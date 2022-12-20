@@ -41,10 +41,10 @@ public class Launcher {
         In this case, it's calling to the getAllEmployeesHandler in the EmployeeController
         SO, when we send a request to localhost:3000/employees, the getEmployeesHandler will execute */
         app.get("/ers_reimbursements", rc.getAllReimbHandler);
-        app.get("/ers_reimbursements", rc.viewPendingReimbHandler);
-        app.get("/ers_reimbursements", rc.viewApprovedReimbHandler);
-        app.get("/ers_reimbursements", rc.viewDeniedReimbHandler);
-        app.get("/ers_reimbursements", rc.viewUserReimbHandler);
+        app.get("/ers_reimbursements/pending", rc.viewPendingReimbHandler);
+        app.get("/ers_reimbursements/approved", rc.viewApprovedReimbHandler);
+        app.get("/ers_reimbursements/denied", rc.viewDeniedReimbHandler);
+        app.get("/ers_reimbursements/user_id_fk", rc.viewUserReimbHandler);
 
         //app.post() is the Javalin method that takes in POST requests
         //why are we allowed to have two handlers that both take requests ending in /employees
@@ -55,7 +55,7 @@ public class Launcher {
         //app.patch() is the Javalin method that takes in PATCH requests
         //{title}?? This is a PATH PARAMETER. The value that the user inputs after /roles/ will be stored.
         app.patch("/ers_reimbursements/{reimb_status_fk}", sc.approveReimb_StatusHandler);
-        app.patch("/ers_reimbursements/{reimb_status_fk}", sc.denyReimb_StatusHandler);
+        //app.patch("/ers_reimbursements/{reimb_status_fk}", sc.denyReimb_StatusHandler);
 
         //this is the endpoint handler for login
         app.post("/login", ac.loginHandler);

@@ -4,6 +4,7 @@ import com.revature.models.ERS_Users;
 import com.revature.models.ERS_User_Roles;
 import com.revature.utils.ConnectionUtil;
 
+import javax.management.relation.Role;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +28,8 @@ public class AuthDAO {
                         rs.getString("ers_password"),
                         rs.getString("ers_first_name"),
                         rs.getString("ers_last_name"),
-                        rs.getInt("user_role_id_fk")
+                        rs.getInt("user_role_id_fk"),
+                        rs.getObject("role", Role.class)
 
                 );
                 int roleFk = rs.getInt("user_role_id_fk");
