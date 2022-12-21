@@ -24,7 +24,7 @@ public class Reimb_StatusController {
         in this case, our Launcher endpoint handler calls it "title", so we need to call "title" here */
         if (AuthController.ses != null) {
 
-            if ((Integer) AuthController.ses.getAttribute("user_role_id") == 2) {
+            //if ((Integer) AuthController.ses.getAttribute("user_role_id") == 2) {
 
                 int reimb_id = Integer.parseInt(ctx.pathParam("reimb_id"));
                 //int to hold the new Role salary that the user will input in the HTTP Request body
@@ -44,8 +44,8 @@ public class Reimb_StatusController {
                 } else {
                     ctx.status(406); //406 "not acceptable"
                 }
-            }
-        }
+            //}
+        //}
 
     };
 
@@ -83,6 +83,6 @@ public class Reimb_StatusController {
             //}
         //}
 
-    //};
+    };
 
 }
