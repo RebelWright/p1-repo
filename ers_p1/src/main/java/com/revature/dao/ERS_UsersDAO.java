@@ -46,7 +46,7 @@ public class ERS_UsersDAO implements ERS_UsersDAO_Interface{
             //we need a string that lays out the sql query we intend to run on the db
             //this string has a wildcard/variable/parameter
             // we have to take the user-inputted role id and put it in the statement
-            String sql = "select * from ers_users where role_id = ?;";
+            String sql = "select * from ers_users where user_role_id_fk = ?;";
             //we need an object called prepared statement to fill the variable in
             //they prepare a query to get sent to the database
             PreparedStatement ps = conn.prepareStatement(sql);

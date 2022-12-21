@@ -44,7 +44,7 @@ public class Launcher {
         app.get("/ers_reimbursements/pending", rc.viewPendingReimbHandler);
         app.get("/ers_reimbursements/approved", rc.viewApprovedReimbHandler);
         app.get("/ers_reimbursements/denied", rc.viewDeniedReimbHandler);
-        app.get("/ers_reimbursements/user_id_fk", rc.viewUserReimbHandler);
+        app.get("/ers_reimbursements/user_id", rc.viewUserReimbHandler);
 
         //app.post() is the Javalin method that takes in POST requests
         //why are we allowed to have two handlers that both take requests ending in /employees

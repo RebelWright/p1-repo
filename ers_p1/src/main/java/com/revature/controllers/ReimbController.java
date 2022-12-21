@@ -185,6 +185,7 @@ public class ReimbController {
 
         //With POST requests, we have JSON data coming in, which we can access with ctx.body();
         //body??? it refers to the BODY (aka the DATA) sent with the HTTP Request (in this case, employee)
+        if(AuthController.ses != null) {
         String body = ctx.body(); //we now have a Java String holding a JSON String
 
         //Instantiate a new GSON object to JSON <-> Java conversions
@@ -198,13 +199,16 @@ public class ReimbController {
            if it fails, we'll send an error message and a 406 status code
          */
 
-        if(reimbDAO.insertReimbursement(newReimb) != null){ //if insert was succesful (which we set to return an Employee)
-            ctx.status(201); //201 "created"
-            ctx.result(body); //send back the employee
-        } else {
-            ctx.status(406); //406 "not acceptable"
-            ctx.result("Insert employee failed!");
+            if(reimbDAO.insertReimbursement(newReimb) != null){ //if insert was succesful (which we set to return an Employee)
+                ctx.status(201); //201 "created"
+                ctx.result(body); //send back the employee
+            } else {
+                ctx.status(406); //406 "not acceptable"
+                ctx.result("Insert employee failed!");
+            }
+        } else { //if the user is NOT logged in:
+            ctx.result("YOU MUST LOG IN TO DO THIS");
+            ctx.status(401); //401 "unauthorized"
         }
-
     };
 }
