@@ -7,10 +7,12 @@ import com.revature.dao.ERS_UsersDAO;
 import com.revature.models.ERS_Reimbursements;
 import io.javalin.http.Handler;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 public class ReimbController {
     ERS_ReimbursementsDAO reimbDAO = new ERS_ReimbursementsDAO();
+    public static HttpSession ses;
     public Handler getAllReimbHandler = (ctx) -> {
 
         /*What's ctx?? The context object! This object contains methods that we can use to

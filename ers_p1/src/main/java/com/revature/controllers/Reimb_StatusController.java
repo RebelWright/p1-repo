@@ -3,6 +3,7 @@ package com.revature.controllers;
 
 import com.revature.dao.AuthDAO;
 import com.revature.dao.ERS_Reimb_StatusDAO;
+import com.revature.models.LoginDTO;
 import io.javalin.http.Handler;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ public class Reimb_StatusController {
     public static HttpSession ses;
     AuthDAO aDAO = new AuthDAO();
     ERS_Reimb_StatusDAO statusDAO = new ERS_Reimb_StatusDAO();
+
     //This Handler will get the HTTP PATCH request to update a Role's salary
     public Handler approveReimb_StatusHandler = (ctx) -> {
 
@@ -20,6 +22,7 @@ public class Reimb_StatusController {
         /*To access a path parameter, we can use ctx.pathParam()
         the value that the user includes will be stored in the "title" key
         in this case, our Launcher endpoint handler calls it "title", so we need to call "title" here */
+
         int reimb_id = Integer.parseInt(ctx.pathParam("reimb_status_fk"));
 
         //int to hold the new Role salary that the user will input in the HTTP Request body
