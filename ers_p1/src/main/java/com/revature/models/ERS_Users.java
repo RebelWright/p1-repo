@@ -34,6 +34,15 @@ public class ERS_Users {
         this.role = role;
     }
 
+    public ERS_Users(int user_id, String ers_username, String ers_password, String user_first_name, String user_last_name, int user_role_id_fk) {
+        this.user_id = user_id;
+        this.ers_username = ers_username;
+        this.ers_password = ers_password;
+        this.user_first_name = user_first_name;
+        this.user_last_name = user_last_name;
+        this.user_role_id_fk = user_role_id_fk;
+    }
+
     public int getUser_id() {
         return user_id;
     }

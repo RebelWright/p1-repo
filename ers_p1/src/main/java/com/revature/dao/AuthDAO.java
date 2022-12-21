@@ -26,10 +26,10 @@ public class AuthDAO {
                         rs.getInt("user_id"),
                         rs.getString("ers_username"),
                         rs.getString("ers_password"),
-                        rs.getString("ers_first_name"),
-                        rs.getString("ers_last_name"),
-                        rs.getInt("user_role_id_fk"),
-                        rs.getObject("role", Role.class)
+                        rs.getString("user_first_name"),
+                        rs.getString("user_last_name"),
+                        rs.getInt("user_role_id_fk")
+                        //rs.getObject("role", Role.class)
 
                 );
                 int roleFk = rs.getInt("user_role_id_fk");

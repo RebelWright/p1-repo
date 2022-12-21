@@ -15,7 +15,7 @@ public class ERS_UsersDAO implements ERS_UsersDAO_Interface{
         try(Connection conn = ConnectionUtil.getConnection()){
 
             //we need to create our SQL string as usual
-            String sql = "insert into ers_users (ers_username, ers_password, ers_first_name, ers_last_name, user_role_id_fk) values (?, ?, ?, ?, 1);";
+            String sql = "insert into ers_users (ers_username, ers_password, user_first_name, user_last_name, user_role_id_fk) values (?, ?, ?, ?, 1);";
 
             //Instantiate a PreparedStatement to hold our SQL and fill its variables
             PreparedStatement ps = conn.prepareStatement(sql);
