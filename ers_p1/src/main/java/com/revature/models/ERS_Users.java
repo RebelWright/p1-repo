@@ -6,8 +6,8 @@ public class ERS_Users {
     private int user_id;
     private String ers_username;
     private String ers_password;
-    private String ers_first_name;
-    private String ers_last_name;
+    private String user_first_name;
+    private String user_last_name;
     private int user_role_id_fk;
 
     private Role role;
@@ -15,21 +15,21 @@ public class ERS_Users {
     public ERS_Users() {
     }
 
-    public ERS_Users(int user_id, String ers_username, String ers_password, String ers_first_name, String ers_last_name, int user_role_id_fk, Role role) {
+    public ERS_Users(int user_id, String ers_username, String ers_password, String user_first_name, String user_last_name, int user_role_id_fk, Role role) {
         this.user_id = user_id;
         this.ers_username = ers_username;
         this.ers_password = ers_password;
-        this.ers_first_name = ers_first_name;
-        this.ers_last_name = ers_last_name;
+        this.user_first_name = user_first_name;
+        this.user_last_name = user_last_name;
         this.user_role_id_fk = user_role_id_fk;
         this.role = role;
     }
 
-    public ERS_Users(String ers_username, String ers_password, String ers_first_name, String ers_last_name, int user_role_id_fk, Role role) {
+    public ERS_Users(String ers_username, String ers_password, String user_first_name, String user_last_name, int user_role_id_fk, Role role) {
         this.ers_username = ers_username;
         this.ers_password = ers_password;
-        this.ers_first_name = ers_first_name;
-        this.ers_last_name = ers_last_name;
+        this.user_first_name = user_first_name;
+        this.user_last_name = user_last_name;
         this.user_role_id_fk = user_role_id_fk;
         this.role = role;
     }
@@ -58,20 +58,20 @@ public class ERS_Users {
         this.ers_password = ers_password;
     }
 
-    public String getErs_first_name() {
-        return ers_first_name;
+    public String getUser_first_name() {
+        return user_first_name;
     }
 
-    public void setErs_first_name(String ers_first_name) {
-        this.ers_first_name = ers_first_name;
+    public void setUser_first_name(String user_first_name) {
+        this.user_first_name = user_first_name;
     }
 
-    public String getErs_last_name() {
-        return ers_last_name;
+    public String getUser_last_name() {
+        return user_last_name;
     }
 
-    public void setErs_last_name(String ers_last_name) {
-        this.ers_last_name = ers_last_name;
+    public void setUser_last_name(String user_last_name) {
+        this.user_last_name = user_last_name;
     }
 
     public int getUser_role_id_fk() {
@@ -96,9 +96,10 @@ public class ERS_Users {
                 "user_id=" + user_id +
                 ", ers_username='" + ers_username + '\'' +
                 ", ers_password='" + ers_password + '\'' +
-                ", ers_first_name='" + ers_first_name + '\'' +
-                ", ers_last_name='" + ers_last_name + '\'' +
+                ", ers_first_name='" + user_first_name + '\'' +
+                ", ers_last_name='" + user_last_name + '\'' +
                 ", user_role_id_fk=" + user_role_id_fk +
+                ", role=" + role +
                 '}';
     }
 }

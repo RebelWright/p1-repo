@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.google.gson.Gson;
 import com.revature.dao.AuthDAO;
+import com.revature.dao.ERS_User_RolesDAO;
 import com.revature.models.ERS_Users;
 import com.revature.models.LoginDTO;
 import io.javalin.http.Handler;
@@ -9,6 +10,7 @@ import io.javalin.http.Handler;
 import javax.servlet.http.HttpSession;
 
 public class AuthController {
+    ERS_User_RolesDAO rolesDAO = new ERS_User_RolesDAO();
     AuthDAO aDAO = new AuthDAO();
     //create an empty HTTPSession will be filled on successful login
     public static HttpSession ses;

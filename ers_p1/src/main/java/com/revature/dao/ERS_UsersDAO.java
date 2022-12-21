@@ -23,8 +23,8 @@ public class ERS_UsersDAO implements ERS_UsersDAO_Interface{
             //fill in each wildcard using the Employee object in the arguments
             ps.setString(1, newUser.getErs_username());
             ps.setString(2, newUser.getErs_password());
-            ps.setString(3, newUser.getErs_first_name());
-            ps.setString(4, newUser.getErs_last_name());
+            ps.setString(3, newUser.getUser_first_name());
+            ps.setString(4, newUser.getUser_last_name());
 
             //now that our SQL String is populated, we can execute the update
             ps.executeUpdate();
