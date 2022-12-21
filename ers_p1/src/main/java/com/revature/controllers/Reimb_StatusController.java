@@ -31,10 +31,14 @@ public class Reimb_StatusController {
         //int resolver_id_fk = Integer.parseInt(ctx.body());
         //we need to parseInt() here since ctx.body() returns String
         //in Postman, no need to make a JSON object, we can just input the new salary int
-
+        statusDAO.getReimbById(reimb_id);
         //if updateRoleSalary returns true...
-        if(statusDAO.changeReimb_Status( reimb_status_fk,reimb_id)){
-            ctx.status(202); //202 "accepted"
+        if(reimb_id != 1) {
+            if (statusDAO.changeReimb_Status(reimb_status_fk, reimb_id)) {
+                ctx.status(202); //202 "accepted"
+            } else {
+                ctx.status(406); //406 "not acceptable"
+            }
         } else {
             ctx.status(406); //406 "not acceptable"
         }

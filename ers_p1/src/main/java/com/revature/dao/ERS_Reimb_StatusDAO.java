@@ -34,6 +34,9 @@ public class ERS_Reimb_StatusDAO implements ERS_Reimb_StatusDAO_Interface{
         }
         return false;
     }
+    public int getReimbById(int reimb_id){
+        return reimb_id;
+    }
     //@Override
     //public boolean approveReimb_Status(int resolver_id_fk, int reimb_id) {
         //try(Connection conn = ConnectionUtil.getConnection()){
