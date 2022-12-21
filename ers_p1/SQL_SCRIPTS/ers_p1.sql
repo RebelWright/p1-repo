@@ -38,3 +38,4 @@ VALUES ('Twright', 'wootl337', 'Trent', 'Wright', 1);
 INSERT INTO ers_users(ers_username, ers_password, user_first_name, user_last_name, user_role_id_fk)
 VALUES ('Bboss', 'password', 'Big', 'Boss', 2);
 SELECT * FROM ers_users;
+SELECT * FROM ers_reimbursements;
