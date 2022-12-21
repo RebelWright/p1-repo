@@ -156,7 +156,7 @@ public class ReimbController {
             //if the Session is not null, we know the user is logged in.
             //Thus, we can allow them to view employees
             if(AuthController.ses != null) {
-                int user_id = (int) AuthController.ses.getAttribute("user_id");
+                int user_id = (Integer) AuthController.ses.getAttribute("user_id");
                 //We need an ArrayList of Employees, courtesy of our EmployeeDAO
                 ArrayList<ERS_Reimbursements> reimbList = reimbDAO.viewUserReimbursements(user_id);
 

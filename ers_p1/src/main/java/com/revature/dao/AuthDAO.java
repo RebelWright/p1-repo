@@ -21,6 +21,7 @@ public class AuthDAO {
             ps.setString(2, ers_password);
             ResultSet rs = ps.executeQuery();
             //since we're only expecting one record. we can use an if instead of while statement
+
             if(rs.next()){
                 ERS_Users u = new ERS_Users(
                         rs.getInt("user_id"),
