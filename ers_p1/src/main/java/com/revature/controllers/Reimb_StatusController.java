@@ -22,25 +22,29 @@ public class Reimb_StatusController {
         /*To access a path parameter, we can use ctx.pathParam()
         the value that the user includes will be stored in the "title" key
         in this case, our Launcher endpoint handler calls it "title", so we need to call "title" here */
+        if (AuthController.ses != null) {
 
+            if ((Integer) AuthController.ses.getAttribute("user_role_id") == 2) {
 
-        int reimb_id = Integer.parseInt(ctx.pathParam("reimb_id"));
-        //int to hold the new Role salary that the user will input in the HTTP Request body
-        int reimb_status_fk = Integer.parseInt(ctx.body());
-        //int resolver_id_fk = (int) ses.getAttribute("user_id");
-        //int resolver_id_fk = Integer.parseInt(ctx.body());
-        //we need to parseInt() here since ctx.body() returns String
-        //in Postman, no need to make a JSON object, we can just input the new salary int
-        statusDAO.getReimbById(reimb_id);
-        //if updateRoleSalary returns true...
-        if(reimb_id != 1) {
-            if (statusDAO.changeReimb_Status(reimb_status_fk, reimb_id)) {
-                ctx.status(202); //202 "accepted"
-            } else {
-                ctx.status(406); //406 "not acceptable"
+                int reimb_id = Integer.parseInt(ctx.pathParam("reimb_id"));
+                //int to hold the new Role salary that the user will input in the HTTP Request body
+                int reimb_status_fk = Integer.parseInt(ctx.body());
+                //int resolver_id_fk = (int) ses.getAttribute("user_id");
+                //int resolver_id_fk = Integer.parseInt(ctx.body());
+                //we need to parseInt() here since ctx.body() returns String
+                //in Postman, no need to make a JSON object, we can just input the new salary int
+                statusDAO.getReimbById(reimb_id);
+                //if updateRoleSalary returns true...
+                if (reimb_id != 1) {
+                    if (statusDAO.changeReimb_Status(reimb_status_fk, reimb_id)) {
+                        ctx.status(202); //202 "accepted"
+                    } else {
+                        ctx.status(406); //406 "not acceptable"
+                    }
+                } else {
+                    ctx.status(406); //406 "not acceptable"
+                }
             }
-        } else {
-            ctx.status(406); //406 "not acceptable"
         }
 
     };
