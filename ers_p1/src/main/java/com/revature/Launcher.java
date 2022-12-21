@@ -54,8 +54,9 @@ public class Launcher {
 
         //app.patch() is the Javalin method that takes in PATCH requests
         //{title}?? This is a PATH PARAMETER. The value that the user inputs after /roles/ will be stored.
-        app.patch("/ers_reimbursements/{reimb_status_fk}", sc.approveReimb_StatusHandler);
-        app.patch("/ers_reimbursements/{reimb_id}", sc.denyReimb_StatusHandler);
+        //app.patch("/ers_reimbursements/{reimb_id}", sc.approveReimb_StatusHandler);
+        //app.patch("/ers_reimbursements/{reimb_id}", sc.denyReimb_StatusHandler);
+        app.patch("/ers_reimbursements/{reimb_id}", sc.changeReimb_StatusHandler);
 
         //this is the endpoint handler for login
         app.post("/login", ac.loginHandler);
