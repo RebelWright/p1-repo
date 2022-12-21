@@ -32,6 +32,7 @@ public class UserController {
         } else {
             ctx.status(406); //406 "not acceptable"
             ctx.result("Insert employee failed!");
+            ctx.result("User name is unavailable");
         }
 
     };
