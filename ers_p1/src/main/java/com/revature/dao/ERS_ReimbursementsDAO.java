@@ -192,7 +192,7 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, user_id);
             //now execute the query and save the results in a ResultSet
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
             //this time before while loop, instantiate an empty arraylist to store our Employee objects
             ArrayList<ERS_Reimbursements> reimbList= new ArrayList();
             //rs.next iterates through the incoming data. returns false when there is no more new data
