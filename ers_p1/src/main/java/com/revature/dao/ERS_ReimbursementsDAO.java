@@ -217,4 +217,37 @@ public class ERS_ReimbursementsDAO implements ERS_ReimbursementsDAO_Interface{
         }
         return null;
     }
+    public ERS_Reimbursements getReimbById(int reimb_id) {
+        try(Connection conn = ConnectionUtil.getConnection()){
+            // a string that rep our sql statement
+            String sql = "select * from ers_reimbursements where reimb_id = ?";
+            //no variables needed in the query above
+            //so instead of a prepared statement we'll use a regular statement
+            //if we don't have wildcard or variables, we only need Statement not Prepared Statement
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, reimb_id);
+            //now execute the query and save the results in a ResultSet
+            ResultSet rs = ps.executeQuery();
+            //this time before while loop, instantiate an empty arraylist to store our Employee objects
+            //rs.next iterates through the incoming data. returns false when there is no more new data
+            if(rs.next()){
+                //for every user reimb returned from the database we'll make a new employee object
+                ERS_Reimbursements reimb = new ERS_Reimbursements(
+                        rs.getInt("reimb_id"),
+                        rs.getInt("reimb_amount"),
+                        rs.getString("reimb_description"),
+                        rs.getInt("creator_id_fk"),
+                        rs.getInt("resolver_id_fk"),
+                        rs.getInt("reimb_type_fk"),
+                        rs.getInt("reimb_status_fk")
+                );
+            return reimb;
+            }
+
+        }
+        catch(SQLException e){
+            e.printStackTrace(); //very helpful. tells us what and where went wrong
+        }
+        return null;
+    }
 }
