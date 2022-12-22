@@ -31,6 +31,7 @@ public class AuthController {
         }
         else {
             ctx.status(401);
+            ctx.result("User name not found");
         }
 
     };
