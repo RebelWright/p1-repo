@@ -42,7 +42,7 @@ public class Reimb_StatusController {
             }
         } else {
             ctx.status(406);
-            ctx.result("Please login in");
+            ctx.result("Please login");
         }
     };
 }
