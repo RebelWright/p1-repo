@@ -29,8 +29,7 @@ public class AuthDAO {
                         rs.getString("ers_password"),
                         rs.getString("user_first_name"),
                         rs.getString("user_last_name"),
-                        rs.getInt("user_role_id_fk"),
-                        null
+                        rs.getInt("user_role_id_fk")
                         //rs.getObject("role", Role.class)
 
                 );
