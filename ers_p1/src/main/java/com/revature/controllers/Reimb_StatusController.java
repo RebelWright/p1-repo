@@ -20,7 +20,7 @@ public class Reimb_StatusController {
 
         if (AuthController.ses != null) {
 
-            if (AuthController.ses.getAttribute("user_role_id")== rolesDAO.getRoleById(2)) {
+            if ((Integer)(AuthController.ses.getAttribute("user_role_id_fk"))== 2) {
 
                 int reimb_id = Integer.parseInt(ctx.pathParam("reimb_id"));
                 int reimb_status_fk = Integer.parseInt(ctx.body());
