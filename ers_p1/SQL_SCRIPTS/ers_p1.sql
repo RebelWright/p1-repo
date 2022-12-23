@@ -39,4 +39,5 @@ INSERT INTO ers_users(ers_username, ers_password, user_first_name, user_last_nam
 VALUES ('Bboss', 'password', 'Big', 'Boss', 2);
 SELECT * FROM ers_users;
 SELECT * FROM ers_reimbursements;
-DELETE FROM ers_users WHERE user_id = 6;
+DELETE FROM ers_users WHERE user_id = 8;
+DELETE FROM ers_reimbursements WHERE reimb_id = 1;
